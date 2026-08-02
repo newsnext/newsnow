@@ -1,4 +1,5 @@
 export const updatedSourceIds = [
+  "samr",
   "dongqiudi",
   "producthunt",
   "aihot",
@@ -20,5 +21,5 @@ export const updatedSourceIds = [
   "bilibili-hot-video",
   "bilibili-ranking",
   "kuaishou",
-  "toutiao"
+  "toutiao",
 ] as const

@@ -203,6 +203,15 @@
     "color": "gray",
     "interval": 1800000
   },
+  "samr": {
+    "title": "国内汽车召回",
+    "name": "国家市场监管总局",
+    "type": "realtime",
+    "column": "china",
+    "home": "https://www.samrdprc.org.cn/qczh/gnzhqc/",
+    "color": "red",
+    "interval": 1800000
+  },
   "sputniknewscn": {
     "name": "卫星通讯社",
     "column": "world",
