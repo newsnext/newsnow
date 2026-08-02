@@ -170,6 +170,15 @@ export const originSources = {
     color: "gray",
     home: "https://www.thepaper.cn",
   },
+  "samr": {
+    name: "国家市场监管总局",
+    title: "国内汽车召回",
+    interval: Time.Common,
+    type: "realtime",
+    column: "china",
+    color: "red",
+    home: "https://www.samrdprc.org.cn/qczh/gnzhqc/",
+  },
   "sputniknewscn": {
     name: "卫星通讯社",
     color: "orange",
