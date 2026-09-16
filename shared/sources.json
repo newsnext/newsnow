@@ -42,15 +42,6 @@
     "color": "red",
     "interval": 1800000
   },
-  "coolapk": {
-    "title": "今日最热",
-    "name": "酷安",
-    "type": "hottest",
-    "column": "tech",
-    "home": "https://coolapk.com",
-    "color": "green",
-    "interval": 600000
-  },
   "mktnews": {
     "redirect": "mktnews-flash",
     "name": "MKTNews",
