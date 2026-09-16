@@ -500,6 +500,18 @@ export const originSources = {
       },
     },
   },
+  "morningbrew": {
+    name: "Morning Brew",
+    color: "blue",
+    home: "https://www.morningbrew.com",
+    column: "world",
+    sub: {
+      "trending-today": {
+        title: "Newsletter",
+        type: "realtime",
+      },
+    },
+  },
 } as const satisfies Record<string, OriginSource>
 
 export function genSources() {
