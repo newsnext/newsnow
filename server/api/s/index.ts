@@ -87,7 +87,16 @@ export default defineEventHandler(async (event): Promise<SourceResponse> => {
           info,
         }
       } else {
-        throw e
+        // 单个 source 抓取失败时（例如目标站点封禁/405/超时）不要让整个接口 500，
+        // 以免 MCP/Agent 调用直接崩溃。返回空列表并记录日志。
+        logger.error(e)
+        return {
+          status: "success",
+          id,
+          updatedTime: now,
+          items: [],
+        }
+      }
       }
     }
   } catch (e: any) {
