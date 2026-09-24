@@ -4,20 +4,19 @@ import iconv from "iconv-lite"
 import type { NewsItem } from "@shared/types"
 
 export default defineSource(async () => {
-  const response: ArrayBuffer = await myFetch("https://www.kzaobao.com/top.html", {
+  const response: ArrayBuffer = await myFetch("https://www.zaochenbao.com/realtime/", {
     responseType: "arrayBuffer",
   })
-  const base = "https://www.kzaobao.com"
+  const base = "https://www.zaochenbao.com"
   const utf8String = iconv.decode(Buffer.from(response), "gb2312")
   const $ = cheerio.load(utf8String)
-  const $main = $("div[id^='cd0'] tr")
+  const $main = $("div.list-block>a.item")
   const news: NewsItem[] = []
   $main.each((_, el) => {
-    const a = $(el).find("h3>a")
-    // https://www.kzaobao.com/shiju/20241002/170659.html
+    const a = $(el)
     const url = a.attr("href")
-    const title = a.text()
-    const date = $(el).find("td:nth-child(3)").text()
+    const title = a.find(".eps")?.text()
+    const date = a.find(".pdt10")?.text().replace(/-\s/g, " ")
     if (url && title && date) {
       news.push({
         url: base + url,

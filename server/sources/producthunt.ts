@@ -1,28 +1,63 @@
-import * as cheerio from "cheerio"
+import process from "node:process"
+import dayjs from "dayjs/esm"
+import timezonePlugin from "dayjs/esm/plugin/timezone"
+import utcPlugin from "dayjs/esm/plugin/utc"
 import type { NewsItem } from "@shared/types"
 
+dayjs.extend(utcPlugin)
+dayjs.extend(timezonePlugin)
+
+const feed = defineRSSSource("https://www.producthunt.com/feed")
+
 export default defineSource(async () => {
-  const baseURL = "https://www.producthunt.com/"
-  const html: any = await myFetch(baseURL)
-  const $ = cheerio.load(html)
-  const $main = $("[data-test=homepage-section-0] [data-test^=post-item]")
-  const news: NewsItem[] = []
-  $main.each((_, el) => {
-    const a = $(el).find("a").first()
-    const url = a.attr("href")
-    const title = $(el).find("a[data-test^=post-name]").text()
-    const id = $(el).attr("data-test")?.replace("post-item-", "")
-    const vote = $(el).find("[data-test=vote-button]").text()
-    if (url && id && title) {
-      news.push({
-        url: `${baseURL}${url}`,
-        title,
-        id,
-        extra: {
-          info: `△︎ ${vote}`,
-        },
-      })
+  const apiToken = process.env.PRODUCTHUNT_API_TOKEN
+  if (!apiToken) return feed()
+
+  const postedAfter = dayjs().tz("America/Los_Angeles").startOf("day").toISOString()
+  const query = `
+    query($postedAfter: DateTime!) {
+      posts(first: 30, order: RANKING, postedAfter: $postedAfter) {
+        edges {
+          node {
+            id
+            name
+            tagline
+            votesCount
+            url
+            slug
+          }
+        }
+      }
     }
-  })
-  return news
+  `
+
+  try {
+    const response: any = await myFetch("https://api.producthunt.com/v2/api/graphql", {
+      method: "POST",
+      headers: {
+        "Authorization": `Bearer ${apiToken}`,
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+      },
+      body: JSON.stringify({ query, variables: { postedAfter } }),
+    })
+
+    const posts = response?.data?.posts?.edges || []
+    const news: NewsItem[] = posts.map((edge: any) => {
+      const post = edge.node
+      return {
+        id: post.id,
+        title: post.name,
+        url: post.url || `https://www.producthunt.com/posts/${post.slug}`,
+        extra: {
+          info: ` △︎ ${post.votesCount || 0}`,
+          hover: post.tagline,
+        },
+      }
+    }).filter((post: NewsItem) => post.id && post.title)
+
+    return news.length ? news : feed()
+  } catch {
+    return feed()
+  }
 })

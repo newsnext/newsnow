@@ -1,4 +1,4 @@
-import type { ComponentPropsWithoutRef, ElementRef, ElementType, ForwardedRef } from "react"
+import type { ComponentPropsWithoutRef, ComponentRef, ElementType, ForwardedRef } from "react"
 import { useEffect, useMemo, useRef } from "react"
 import { OverlayScrollbars } from "overlayscrollbars"
 import type { EventListeners, InitializationTarget, PartialOptions } from "overlayscrollbars"
@@ -24,7 +24,7 @@ interface OverlayScrollbarsComponentRef<T extends ElementType = "div"> {
   /** Returns the OverlayScrollbars instance or null if not initialized. */
   osInstance: () => OverlayScrollbars | null
   /** Returns the root element. */
-  getElement: () => ElementRef<T> | null
+  getElement: () => ComponentRef<T> | null
 }
 
 type Defer = [

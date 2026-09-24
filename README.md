@@ -1,26 +1,63 @@
-# NewsNow
-![](screenshots/preview-1.png)
+![](/public/og-image.png)
 
-![](screenshots/preview-2.png)
+English | [简体中文](README.zh-CN.md) | [日本語](README.ja-JP.md)
 
-English | [简体中文](README.zh-CN.md)
+> [!NOTE]
+> NewsNext, the next gen of NewsNow, is coming soon, join the [waitlist](https://tally.so/r/yPBBYg).
 
-***Elegant reading of real-time and hottest news***
+**_Elegant reading of real-time and hottest news_**
 
 ## Features
-- Elegant design for a pleasant reading experience, keeping you up-to-date with the latest and hottest news.
-- Supports Github login and data synchronization.
-- Default cache duration is 30 minutes. Logged-in users can force fetch the latest data. However, the scraping interval is adjusted based on the update frequency of the content sources (as fast as every two minutes) to save resources and prevent frequent scraping that could lead to IP bans.
+
+- Clean and elegant UI design for optimal reading experience
+- Real-time updates on trending news
+- GitHub OAuth login with data synchronization
+- 30-minute default cache duration (logged-in users can force refresh)
+- Adaptive scraping interval (minimum 2 minutes) based on source update frequency to optimize resource usage and prevent IP bans
+- support MCP server
+
+```json
+{
+  "mcpServers": {
+    "newsnow": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "newsnow-mcp-server"
+      ],
+      "env": {
+        "BASE_URL": "https://newsnow.busiyi.world"
+      }
+    }
+  }
+}
+```
+You can change the `BASE_URL` to your own domain.
 
 ## Deployment
 
-If login and caching are not required, you can directly deploy to platforms like Cloudflare Pages or Vercel. Just fork the repository and import it into the respective platform.
+### Basic Deployment
 
-For Cloudflare Pages, you need to set the build command to `pnpm run build` and the build output directory to `dist/output/public`.
+For deployments without login and caching:
 
-For login, which involves GitHub OAuth, you only need to [create a GitHub App](https://github.com/settings/applications/new). No special permissions are required. The callback URL should be `https://your-domain.com/api/oauth/github` (replace `your-domain` with your actual domain).
+1. Fork this repository
+2. Import to platforms like Cloudflare Page or Vercel
 
-After creating the app, you will get a Client ID and Client Secret. Different platforms have different places to set environment variables; refer to the `example.env.server` file. If running locally, rename it to `.env.server` and add the necessary values.
+### Cloudflare Page Configuration
+
+- Build command: `pnpm run build`
+- Output directory: `dist/output/public`
+
+### GitHub OAuth Setup
+
+1. [Create a GitHub App](https://github.com/settings/applications/new)
+2. No special permissions required
+3. Set callback URL to: `https://your-domain.com/api/oauth/github` (replace `your-domain` with your actual domain)
+4. Obtain Client ID and Client Secret
+
+### Environment Variables
+
+Refer to `example.env.server`. For local development, rename it to `.env.server` and configure:
 
 ```env
 # Github Client ID
@@ -35,22 +72,30 @@ INIT_TABLE=true
 ENABLE_CACHE=true
 ```
 
-This project primarily supports deployment on Cloudflare Pages and Docker. For Vercel, you need to set up your own database. Supported databases can be found at https://db0.unjs.io/connectors .
+### Database Support
 
-The Cloudflare D1 database can be used for free. To set it up, go to the Cloudflare Worker control panel and manually create a D1 database. Then, add the `database_id` and `database_name` to the corresponding fields in your `wrangler.toml` file.
+Supported database connectors: https://db0.unjs.io/connectors
+**Cloudflare D1 Database** is recommended.
 
-If you don't have a `wrangler.toml` file, you can rename `example.wrangler.toml` to `wrangler.toml` and modify it with your configuration. The changes will take effect on your next deployment.
+1. Create D1 database in Cloudflare Worker dashboard
+2. Configure database_id and database_name in wrangler.toml
+3. If wrangler.toml doesn't exist, rename example.wrangler.toml and modify configurations
+4. Changes will take effect on next deployment
 
-For Docker deployment. In the project root directory with `docker-compose.yml`, run
+### Docker Deployment
+
+In project root directory:
 
 ```sh
 docker compose up
 ```
 
+You can also set Environment Variables in `docker-compose.yml`.
+
 ## Development
 
-> [!TIP]
-> Node version >= 20
+> [!Note]
+> Requires Node.js >= 20
 
 ```sh
 corepack enable
@@ -58,8 +103,35 @@ pnpm i
 pnpm dev
 ```
 
-If you want to add data sources, refer to the `shared/sources`, and `server/sources` directories. The project has complete types and a simple structure; feel free to explore.
+### Adding Data Sources
+
+Refer to `shared/sources` and `server/sources` directories. The project provides complete type definitions and a clean architecture.
+
+For detailed instructions on how to add new sources, see [CONTRIBUTING.md](CONTRIBUTING.md).
+
+## Roadmap
+
+- Add **multi-language support** (English, Chinese, more to come).
+- Improve **personalization options** (category-based news, saved preferences).
+- Expand **data sources** to cover global news in multiple languages.
+
+**_release when ready_**
+![](https://testmnbbs.oss-cn-zhangjiakou.aliyuncs.com/pic/20250328172146_rec_.gif?x-oss-process=base_webp)
+
+## Contributing
+
+~~Contributions are welcome! Feel free to submit pull requests or create issues for feature requests and bug reports.~~
+
+The new version is coming soon and we will no longer accept contributions
+
+~~See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines on how to contribute, especially for adding new data sources.~~
 
 ## License
 
 [MIT](./LICENSE) © ourongxing
+
+## Sponsorship
+
+If you rely on this service, sponsorship is welcome to help it run for the long term. If you need customization or other help, you can also use the contact method below and include a note.
+
+![](./screenshots/reward.gif)

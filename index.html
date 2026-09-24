@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="zh-CN" class="dark">
 
 <head>
   <meta charset="UTF-8" />
@@ -10,63 +10,45 @@
   <meta name="keywords" content="新闻,科技新闻,实时新闻,新闻聚合,NewsNow" />
   <meta name="author" content="NewsNow" />
   <meta name="robots" content="index, follow" />
-  
+
   <!-- Open Graph Meta Tags -->
   <meta property="og:title" content="NewsNow - 优雅的新闻聚合阅读器" />
   <meta property="og:description" content="实时新闻聚合阅读器，汇集全球热点新闻，提供优雅的阅读体验" />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://shishixinwen.news" />
-  <meta property="og:image" content="https://shishixinwen.news/og-image.svg" />
-  
+  <meta property="og:url" content="https://newsnow.busiyi.world" />
+  <meta property="og:image" content="https://newsnow.busiyi.world/og-image.png" />
+
   <!-- Twitter Card Meta Tags -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="NewsNow - 优雅的新闻聚合阅读器" />
   <meta name="twitter:description" content="实时新闻聚合阅读器，汇集全球热点新闻，提供优雅的阅读体验" />
-  <meta name="twitter:image" content="https://shishixinwen.news/og-image.svg" />
-  
+  <meta name="twitter:image" content="https://newsnow.busiyi.world/og-image.svg" />
+
   <meta name="theme-color" content="#F14D42" />
   <link rel="preload" href="/Baloo2-Bold.subset.ttf" as="font" type="font/ttf" crossorigin>
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
-  
+
   <!-- Schema.org markup for Google -->
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "WebSite",
       "name": "NewsNow",
-      "url": "https://shishixinwen.news",
+      "url": "https://newsnow.busiyi.world",
       "description": "实时新闻聚合阅读器，汇集全球热点新闻，提供优雅的阅读体验",
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": "https://shishixinwen.news/search?q={search_term_string}",
-        "query-input": "required name=search_term_string"
-      }
     }
   </script>
-  
+
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-EL9HHYE5LC"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
     gtag('config', 'G-EL9HHYE5LC');
   </script>
-  
-  <script>
-    function safeParseString(str) {
-      try {
-        return JSON.parse(str)
-      } catch {
-        return ""
-      }
-    }
-    const theme = safeParseString(localStorage.getItem("color-scheme")) || "auto"
-    const isDark = window.matchMedia("(prefers-color-scheme: dark)").matches
-    if (theme === "auto" ? isDark : theme === "dark") {
-      document.documentElement.classList.add("dark")
-    }
 
+  <script>
     const query = new URLSearchParams(window.location.search)
     if (query.has("login") && query.has("user") && query.has("jwt")) {
       localStorage.setItem("user", query.get("user"))

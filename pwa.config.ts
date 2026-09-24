@@ -3,6 +3,7 @@ import type { VitePWAOptions } from "vite-plugin-pwa"
 import { VitePWA } from "vite-plugin-pwa"
 
 const pwaOption: Partial<VitePWAOptions> = {
+  registerType: "prompt",
   includeAssets: ["icon.svg", "apple-touch-icon.png"],
   filename: "swx.js",
   manifest: {
@@ -37,6 +38,8 @@ const pwaOption: Partial<VitePWAOptions> = {
   },
   workbox: {
     navigateFallbackDenylist: [/^\/api/],
+    // sw.js 是旧版本的自销毁 SW，必须始终从网络获取，不能被预缓存
+    globIgnores: ["**/sw.js"],
   },
   devOptions: {
     enabled: process.env.SW_DEV === "true",

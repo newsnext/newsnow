@@ -3,6 +3,12 @@ import { getters } from "#/getters"
 import { getCacheTable } from "#/database/cache"
 import type { CacheInfo } from "#/types"
 
+const info = {
+  LICENCE: "MIT",
+  Github: "https://github.com/ourongxing/newsnow",
+  Sponsorship: "If you rely on this service, sponsorship is welcome to help it run for the long term. Scan the QR code https://raw.githubusercontent.com/ourongxing/newsnow/main/screenshots/reward.gif",
+}
+
 export default defineEventHandler(async (event): Promise<SourceResponse> => {
   try {
     const query = getQuery(event)
@@ -32,6 +38,7 @@ export default defineEventHandler(async (event): Promise<SourceResponse> => {
             id,
             updatedTime: now,
             items: cache.items,
+            info,
           }
         }
 
@@ -49,6 +56,7 @@ export default defineEventHandler(async (event): Promise<SourceResponse> => {
               id,
               updatedTime: cache.updated,
               items: cache.items,
+              info,
             }
           }
         }
@@ -67,6 +75,7 @@ export default defineEventHandler(async (event): Promise<SourceResponse> => {
         id,
         updatedTime: now,
         items: newData,
+        info,
       }
     } catch (e) {
       if (cache!) {
@@ -75,6 +84,7 @@ export default defineEventHandler(async (event): Promise<SourceResponse> => {
           id,
           updatedTime: cache.updated,
           items: cache.items,
+          info,
         }
       } else {
         throw e

@@ -52,7 +52,7 @@ const news = defineSource(async () => {
 
   const res: NewsRes = await myFetch(apiUrl)
   return res.data.items
-    .filter(k => k.resource_type !== "ad" && k.resource.type !== "live" && k.resource.uri)
+    .filter(k => k.resource_type !== "theme" && k.resource_type !== "ad" && k.resource.type !== "live" && k.resource.uri)
     .map(({ resource: h }) => {
       return {
         id: h.id,

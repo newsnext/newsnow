@@ -19,7 +19,7 @@
 }
 
 [cmdk-list] {
-    --at-apply: px-3 flex flex-col gap-2 items-stretch h-400px;
+    --at-apply: px-3 flex flex-col gap-2 items-stretch max-h-[400px] h-[calc(100vh-100px)];
 }
 
 [cmdk-group-heading] {
@@ -34,7 +34,8 @@
     z-index: 999;
     left: 50%;
     top: 50%;
-    transform: translateX(-50%) translateY(-50%);
+    /* transform: translateX(-50%) translateY(-50%); */
+    transform: translate(round(-50%, 1px), round(-50%, 1px));
 }
 
 [cmdk-dialog] {

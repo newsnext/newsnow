@@ -14,3 +14,6 @@ wrangler.toml
 imports.app.d.ts
 
 .idea/
+package-lock.json
+.specstory/vr/
+vr/

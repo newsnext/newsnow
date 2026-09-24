@@ -59,9 +59,16 @@ const hot = defineSource(async () => {
 })
 
 const telegraph = defineSource(async () => {
-  const apiUrl = `https://www.cls.cn/nodeapi/updateTelegraphList`
+  const apiUrl = `https://www.cls.cn/v1/roll/get_roll_list`
   const res: TelegraphRes = await myFetch(apiUrl, {
-    query: Object.fromEntries(await getSearchParams()),
+    query: Object.fromEntries(await getSearchParams({
+      last_time: Math.floor(Date.now() / 1000),
+      refresh_type: 1,
+      rn: 30,
+    })),
+    headers: {
+      Referer: "https://www.cls.cn/telegraph",
+    },
   })
   return res.data.roll_data.filter(k => !k.is_ad).map((k) => {
     return {

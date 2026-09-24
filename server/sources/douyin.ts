@@ -11,7 +11,7 @@ interface Res {
 
 export default defineSource(async () => {
   const url = "https://www.douyin.com/aweme/v1/web/hot/search/list/?device_platform=webapp&aid=6383&channel=channel_pc_web&detail_list=1"
-  const cookie = (await $fetch.raw("https://www.douyin.com/passport/general/login_guiding_strategy/?aid=6383")).headers.getSetCookie()
+  const cookie = (await $fetch.raw("https://login.douyin.com/")).headers.getSetCookie()
   const res: Res = await myFetch(url, {
     headers: {
       cookie: cookie.join("; "),

@@ -1,4 +1,4 @@
-import { defineConfig, presetIcons, presetUno, transformerDirectives, transformerVariantGroup } from "unocss"
+import { defineConfig, presetIcons, presetWind3, transformerDirectives, transformerVariantGroup } from "unocss"
 import { hex2rgba } from "@unocss/rule-utils"
 import { sources } from "./shared/sources"
 
@@ -6,7 +6,7 @@ export default defineConfig({
   mergeSelectors: false,
   transformers: [transformerDirectives(), transformerVariantGroup()],
   presets: [
-    presetUno(),
+    presetWind3(),
     presetIcons({
       scale: 1.2,
     }),
@@ -32,8 +32,8 @@ export default defineConfig({
   ],
   shortcuts: {
     "color-base": "color-neutral-800 dark:color-neutral-300",
-    "bg-base": "bg-zinc-50 dark:bg-dark-600",
-    "btn": "op50 hover:op85",
+    "bg-base": "bg-zinc-200 dark:bg-dark-600",
+    "btn": "op50 hover:op85 cursor-pointer transition-all",
   },
   safelist: [
     ...["orange", ...new Set(Object.values(sources).map(k => k.color))].map(k =>

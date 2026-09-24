@@ -26,13 +26,13 @@ export default defineConfig({
       // autoCodeSplitting: true,
     }),
     unimport.vite({
-      dirs: ["src/hooks", "shared", "src/utils", "src/atoms"],
+      dirs: ["src/hooks", "src/utils", "src/atoms", "shared/{consts,metadata,sources,type.util,utils,verify}.ts"],
       presets: ["react", {
         from: "jotai",
         imports: ["atom", "useAtom", "useAtomValue", "useSetAtom"],
       }],
       imports: [
-        { from: "clsx", name: "default", as: "$" },
+        { from: "clsx", name: "clsx", as: "$" },
         { from: "jotai/utils", name: "atomWithStorage" },
       ],
       dts: "imports.app.d.ts",

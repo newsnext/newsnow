@@ -37,7 +37,7 @@ export default defineSource(async () => {
     return {
       id: k.id,
       title: title ?? text,
-      pubDate: parseRelativeDate(k.time, "Asia/Shanghai").valueOf(),
+      pubDate: tranformToUTC(k.time),
       url: `https://flash.jin10.com/detail/${k.id}`,
       extra: {
         hover: desc,

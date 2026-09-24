@@ -54,7 +54,7 @@ export default defineSource(async () => {
       title: hotItem.name,
       url: `https://www.kuaishou.com/search/video?searchKey=${encodeURIComponent(hotItem.name)}`,
       extra: {
-        icon: hotItem.iconUrl && proxyPicture(hotItem.iconUrl),
+        icon: hotItem.iconUrl,
       },
     }
   })

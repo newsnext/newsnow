@@ -4,6 +4,7 @@ import { Outlet, createRootRouteWithContext } from "@tanstack/react-router"
 import { TanStackRouterDevtools } from "@tanstack/router-devtools"
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools"
 import type { QueryClient } from "@tanstack/react-query"
+import { isMobile } from "react-device-detect"
 import { Header } from "~/components/header"
 import { GlobalOverlayScrollbar } from "~/components/common/overlay-scrollbar"
 import { Footer } from "~/components/footer"
@@ -30,11 +31,13 @@ function RootComponent() {
   usePWA()
   return (
     <>
-      <GlobalOverlayScrollbar className={$([
-        "h-full overflow-x-auto px-4",
-        "md:(px-10)",
-        "lg:(px-24)",
-      ])}
+      <GlobalOverlayScrollbar
+        className={$([
+          !isMobile && "px-4",
+          "h-full overflow-x-auto",
+          "md:(px-10)",
+          "lg:(px-24)",
+        ])}
       >
         <header
           className={$([

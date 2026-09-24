@@ -21,6 +21,7 @@ export const currentSourcesAtom = atom((get) => {
   const id = get(currentColumnIDAtom)
   return get(primitiveMetadataAtom).data[id]
 }, (get, set, update: Update<SourceID[]>) => {
+  if (get(currentColumnIDAtom) !== "focus") return
   const _ = update instanceof Function ? update(get(currentSourcesAtom)) : update
   set(primitiveMetadataAtom, {
     updatedTime: Date.now(),
