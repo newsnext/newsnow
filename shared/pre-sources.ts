@@ -275,6 +275,14 @@ export const originSources = {
     type: "hottest",
     home: "https://news.ycombinator.com/",
   },
+  "openai": {
+    name: "OpenAI",
+    color: "green",
+    column: "tech",
+    type: "realtime",
+    interval: Time.Common,
+    home: "https://openai.com/",
+  },
   "producthunt": {
     name: "Product Hunt",
     color: "red",
