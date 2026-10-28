@@ -3,60 +3,118 @@
 
 <head>
   <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/icon.svg" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- SEO Meta Tags -->
-  <meta name="description" content="NewsNow - 实时新闻聚合阅读器，汇集全球热点新闻，提供优雅的阅读体验" />
-  <meta name="keywords" content="新闻,科技新闻,实时新闻,新闻聚合,NewsNow" />
-  <meta name="author" content="NewsNow" />
-  <meta name="robots" content="index, follow" />
 
-  <!-- Open Graph Meta Tags -->
-  <meta property="og:title" content="NewsNow - 优雅的新闻聚合阅读器" />
-  <meta property="og:description" content="实时新闻聚合阅读器，汇集全球热点新闻，提供优雅的阅读体验" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://newsnow.busiyi.world" />
-  <meta property="og:image" content="https://newsnow.busiyi.world/og-image.png" />
-
-  <!-- Twitter Card Meta Tags -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="NewsNow - 优雅的新闻聚合阅读器" />
-  <meta name="twitter:description" content="实时新闻聚合阅读器，汇集全球热点新闻，提供优雅的阅读体验" />
-  <meta name="twitter:image" content="https://newsnow.busiyi.world/og-image.svg" />
-
-  <meta name="theme-color" content="#F14D42" />
-  <link rel="preload" href="/Baloo2-Bold.subset.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="icon" type="image/svg+xml" href="/icon.svg" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
 
-  <!-- Schema.org markup for Google -->
+  <!-- SEO 基础信息 -->
+  <title>今日热榜｜实时热点资讯与新媒体选题参考</title>
+
+  <meta
+    name="description"
+    content="今日热榜实时聚合多平台热点资讯，帮助你快速了解热门话题与趋势，为新媒体选题、内容策划和文章创作提供参考。"
+  />
+
+  <meta
+    name="keywords"
+    content="今日热榜,实时热榜,热点新闻,新闻聚合,热门资讯,热点追踪,新媒体选题,写作素材,内容策划"
+  />
+
+  <meta name="author" content="朱雀新媒体" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#F14D42" />
+
+  <!-- Open Graph 社交分享信息 -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="今日热榜" />
+  <meta
+    property="og:title"
+    content="今日热榜｜实时热点资讯与新媒体选题参考"
+  />
+  <meta
+    property="og:description"
+    content="聚合多平台热点资讯，快速发现热门话题与趋势，为新媒体选题和内容创作提供参考。"
+  />
+  <meta property="og:url" content="https://news.zhuque.net.cn/" />
+  <meta
+    property="og:image"
+    content="https://news.zhuque.net.cn/og-image.png"
+  />
+  <meta
+    property="og:image:alt"
+    content="今日热榜 - 实时热点资讯与新媒体选题参考"
+  />
+
+  <!-- X（原 Twitter）分享信息 -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta
+    name="twitter:title"
+    content="今日热榜｜实时热点资讯与新媒体选题参考"
+  />
+  <meta
+    name="twitter:description"
+    content="聚合多平台热点资讯，发现热门话题与趋势，为新媒体选题和内容创作提供参考。"
+  />
+  <meta
+    name="twitter:image"
+    content="https://news.zhuque.net.cn/og-image.png"
+  />
+
+  <!-- 字体预加载 -->
+  <link
+    rel="preload"
+    href="/Baloo2-Bold.subset.ttf"
+    as="font"
+    type="font/ttf"
+    crossorigin
+  />
+
+  <!-- Schema.org 结构化数据 -->
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "WebSite",
-      "name": "NewsNow",
-      "url": "https://newsnow.busiyi.world",
-      "description": "实时新闻聚合阅读器，汇集全球热点新闻，提供优雅的阅读体验",
+      "name": "今日热榜",
+      "url": "https://news.zhuque.net.cn/",
+      "description": "今日热榜实时聚合多平台热点资讯，为新媒体选题、内容策划和文章创作提供参考。",
+      "inLanguage": "zh-CN"
     }
   </script>
 
   <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EL9HHYE5LC"></script>
+  <script
+    async
+    src="https://www.googletagmanager.com/gtag/js?id=G-EL9HHYE5LC"
+  ></script>
+
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
     gtag('js', new Date());
     gtag('config', 'G-EL9HHYE5LC');
   </script>
 
+  <!-- GitHub 登录回调处理：保留原项目逻辑 -->
   <script>
-    const query = new URLSearchParams(window.location.search)
+    const query = new URLSearchParams(window.location.search);
+
     if (query.has("login") && query.has("user") && query.has("jwt")) {
-      localStorage.setItem("user", query.get("user"))
-      localStorage.setItem("jwt", JSON.stringify(query.get("jwt")))
-      window.history.replaceState({}, document.title, window.location.pathname)
+      localStorage.setItem("user", query.get("user"));
+      localStorage.setItem("jwt", JSON.stringify(query.get("jwt")));
+
+      window.history.replaceState(
+        {},
+        document.title,
+        window.location.pathname
+      );
     }
   </script>
-  <title>NewsNow</title>
 </head>
 
 <body>

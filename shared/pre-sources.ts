@@ -274,6 +274,7 @@ export const originSources = {
     column: "tech",
     type: "hottest",
     home: "https://news.ycombinator.com/",
+    disable: true,
   },
   "producthunt": {
     name: "Product Hunt",
@@ -281,6 +282,7 @@ export const originSources = {
     column: "tech",
     type: "hottest",
     home: "https://www.producthunt.com/",
+    disable: true,
   },
   "github": {
     name: "Github",
@@ -469,6 +471,7 @@ export const originSources = {
     color: "green",
     type: "hottest",
     home: "https://www.freebuf.com/",
+    disable: true,
   },
 
   "qqvideo": {
