@@ -19,11 +19,29 @@ html.dark {
   color-scheme: dark;
 }
 
+html:not(.dark) {
+  color-scheme: light;
+}
+
 body {
   --at-apply: color-base bg-base sprinkle-primary text-base;
   -moz-user-select: none;
   -webkit-user-select: none;
   user-select: none;
+  /* 主题切换时平滑过渡，避免黑白瞬间跳变 */
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body {
+    transition: none;
+  }
+}
+
+/* 浅色模式下把品牌光晕调淡，避免整页泛红 */
+html:not(.dark) body {
+  background-image: radial-gradient(ellipse 80% 80% at 50% -30%,
+      rgba(241, 77, 66, 0.14), rgba(255, 255, 255, 0));
 }
 
 button:disabled {

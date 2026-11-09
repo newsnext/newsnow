@@ -25,7 +25,27 @@
   <meta name="twitter:description" content="实时新闻聚合阅读器，汇集全球热点新闻，提供优雅的阅读体验" />
   <meta name="twitter:image" content="https://newsnow.busiyi.world/og-image.svg" />
 
-  <meta name="theme-color" content="#F14D42" />
+  <meta name="theme-color" content="#1c1c1e" />
+  <!-- 首屏主题：默认暗色，若用户选择过浅色则在渲染前就切换，避免闪白 -->
+  <script>
+    (function () {
+      try {
+        var raw = localStorage.getItem("color-scheme")
+        // jotai 的 atomWithStorage 会写入 JSON 字符串，这里兼容历史/裸值两种写法
+        var scheme = raw ? String(raw).replace(/^"|"$/g, "") : "dark"
+        if (scheme !== "light" && scheme !== "dark" && scheme !== "auto")
+          scheme = "dark"
+        var dark = scheme === "auto"
+          ? window.matchMedia("(prefers-color-scheme: dark)").matches
+          : scheme === "dark"
+        document.documentElement.classList.toggle("dark", dark)
+        var meta = document.querySelector('meta[name="theme-color"]')
+        if (meta) meta.setAttribute("content", dark ? "#1c1c1e" : "#e4e4e7")
+      } catch (e) {
+        // localStorage 不可用时保持 index.html 上写死的默认暗色
+      }
+    })()
+  </script>
   <link rel="preload" href="/Baloo2-Bold.subset.ttf" as="font" type="font/ttf" crossorigin>
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
 
