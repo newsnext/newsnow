@@ -19,6 +19,9 @@ export const columns = {
   sports: {
     zh: "体育",
   },
+  keyword: {
+    zh: "关键词查询",
+  },
   focus: {
     zh: "关注",
   },

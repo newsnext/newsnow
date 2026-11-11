@@ -441,6 +441,15 @@
     "color": "blue",
     "interval": 600000
   },
+  "baidunews": {
+    "title": "汽车 能源",
+    "name": "百度资讯",
+    "type": "realtime",
+    "column": "keyword",
+    "home": "https://www.baidu.com",
+    "color": "blue",
+    "interval": 300000
+  },
   "nowcoder": {
     "name": "牛客",
     "type": "hottest",
@@ -536,6 +545,15 @@
     "color": "blue",
     "interval": 1800000,
     "title": "综合早报"
+  },
+  "qqnewssearch": {
+    "title": "AI 机器人",
+    "name": "腾讯资讯",
+    "type": "realtime",
+    "column": "keyword",
+    "home": "https://news.qq.com",
+    "color": "blue",
+    "interval": 1800000
   },
   "freebuf": {
     "title": "网络安全",
