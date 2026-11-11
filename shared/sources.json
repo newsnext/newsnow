@@ -33,6 +33,25 @@
     "color": "red",
     "interval": 120000
   },
+  "sinafinance": {
+    "redirect": "sinafinance-7x24",
+    "name": "新浪财经",
+    "type": "realtime",
+    "column": "finance",
+    "home": "https://finance.sina.com.cn",
+    "color": "red",
+    "interval": 120000,
+    "title": "7x24小时"
+  },
+  "sinafinance-7x24": {
+    "name": "新浪财经",
+    "type": "realtime",
+    "column": "finance",
+    "home": "https://finance.sina.com.cn",
+    "color": "red",
+    "interval": 120000,
+    "title": "7x24小时"
+  },
   "zaobao": {
     "name": "联合早报",
     "type": "realtime",
