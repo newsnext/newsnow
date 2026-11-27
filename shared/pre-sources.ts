@@ -40,6 +40,19 @@ export const originSources = {
     interval: Time.Realtime,
     home: "https://weibo.com",
   },
+  "sinafinance": {
+    name: "新浪财经",
+    color: "red",
+    column: "finance",
+    home: "https://finance.sina.com.cn",
+    interval: Time.Realtime,
+    sub: {
+      "7x24": {
+        title: "7x24小时",
+        type: "realtime",
+      },
+    },
+  },
   "zaobao": {
     name: "联合早报",
     interval: Time.Common,
