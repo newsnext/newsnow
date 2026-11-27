@@ -92,6 +92,41 @@ docker compose up
 
 You can also set Environment Variables in `docker-compose.yml`.
 
+#### macOS Daily Schedule
+
+On macOS, NewsNow can be scheduled to run every day from 5:00 AM until 10:00 AM in the Mac's local timezone. Docker Desktop must already be running. The schedule controls only the `newsnow` Compose service and does not stop Docker Desktop or other containers.
+
+Install and immediately reconcile the schedule:
+
+```sh
+./scripts/install-newsnow-schedule.sh
+```
+
+The LaunchAgent also reconciles after login or agent reload. macOS runs missed calendar events after the Mac wakes, so waking during the active window starts NewsNow and waking after 10:00 AM keeps it stopped.
+
+Run a manual reconciliation at any time:
+
+```sh
+./scripts/newsnow-schedule.sh
+```
+
+Inspect the installed agent:
+
+```sh
+launchctl print gui/$(id -u)/com.newsnow.schedule
+```
+
+Scheduler output is written to:
+
+- `~/Library/Logs/NewsNow/schedule.stdout.log`
+- `~/Library/Logs/NewsNow/schedule.stderr.log`
+
+Remove the schedule without deleting its logs or changing the current container state:
+
+```sh
+./scripts/uninstall-newsnow-schedule.sh
+```
+
 ## Development
 
 > [!Note]
