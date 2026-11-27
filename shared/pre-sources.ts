@@ -350,6 +350,15 @@ export const originSources = {
     type: "hottest",
     home: "https://www.baidu.com",
   },
+  "baidunews": {
+    name: "百度资讯",
+    title: "汽车 能源",
+    column: "keyword",
+    color: "blue",
+    type: "realtime",
+    interval: Time.Fast,
+    home: "https://www.baidu.com",
+  },
   "linuxdo": {
     name: "LINUX DO",
     column: "tech",
@@ -461,6 +470,15 @@ export const originSources = {
         home: "https://news.qq.com/tag/aEWqxLtdgmQ=",
       },
     },
+  },
+  "qqnewssearch": {
+    name: "腾讯资讯",
+    title: "AI 机器人",
+    column: "keyword",
+    color: "blue",
+    type: "realtime",
+    interval: Time.Common,
+    home: "https://news.qq.com",
   },
   "freebuf": {
     name: "Freebuf",
