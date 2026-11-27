@@ -1,10 +1,7 @@
 export const updatedSourceIds = [
-  "freebuf",
-  "hackernews",
-  "kaopu",
-  "pcbeta-windows11",
-  "sputniknewscn",
+  "wallstreetcn-quick",
+  "wallstreetcn-news",
+  "wallstreetcn-hot",
   "aihot",
-  "dongqiudi",
-  "producthunt",
+  "kaopu",
 ] as const

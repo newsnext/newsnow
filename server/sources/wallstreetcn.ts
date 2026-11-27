@@ -29,9 +29,11 @@ interface HotRes {
   }
 }
 
+const apiBase = "https://api-one-wscn.awtmt.com/apiv1/content"
+
 // https://github.com/DIYgod/RSSHub/blob/master/lib/routes/wallstreetcn/live.ts
 const live = defineSource(async () => {
-  const apiUrl = `https://api-one.wallstcn.com/apiv1/content/lives?channel=global-channel&limit=30`
+  const apiUrl = `${apiBase}/lives?channel=global-channel&limit=30`
 
   const res: LiveRes = await myFetch(apiUrl)
   return res.data.items
@@ -48,7 +50,7 @@ const live = defineSource(async () => {
 })
 
 const news = defineSource(async () => {
-  const apiUrl = `https://api-one.wallstcn.com/apiv1/content/information-flow?channel=global-channel&accept=article&limit=30`
+  const apiUrl = `${apiBase}/information-flow?channel=global-channel&accept=article&limit=30`
 
   const res: NewsRes = await myFetch(apiUrl)
   return res.data.items
@@ -66,7 +68,7 @@ const news = defineSource(async () => {
 })
 
 const hot = defineSource(async () => {
-  const apiUrl = `https://api-one.wallstcn.com/apiv1/content/articles/hot?period=all`
+  const apiUrl = `${apiBase}/articles/hot?period=all`
 
   const res: HotRes = await myFetch(apiUrl)
   return res.data.day_items
