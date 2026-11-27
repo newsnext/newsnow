@@ -342,6 +342,14 @@
     "color": "orange",
     "interval": 600000
   },
+  "openai": {
+    "name": "OpenAI",
+    "type": "realtime",
+    "column": "tech",
+    "home": "https://openai.com/",
+    "color": "green",
+    "interval": 1800000
+  },
   "producthunt": {
     "name": "Product Hunt",
     "type": "hottest",
